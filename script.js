@@ -6,6 +6,8 @@ let myProgressBar = document.getElementById('myProgressBar');
 let gif = document.getElementById('gif');
 let masterSongName = document.getElementById('masterSongName');
 let songItems = Array.from(document.getElementsByClassName('songItem'));
+let volumeControl = document.getElementById('volumeControl');
+let muteToggle = document.getElementById('muteToggle');
 
 
 let songs = [
@@ -159,3 +161,29 @@ function formatTime(seconds) {
     if (min < 10) min = `0${min}`;
     return `${min}:${sec}`;
 }
+
+
+//audio volume
+audioElement.volume = 0.5;
+
+volumeControl.addEventListener('input', () => {
+    audioElement.volume = volumeControl.value / 100; // Convert 0-100 to 0.0-1.0
+});
+
+
+//mute audio
+let previousVolume = 0.5;
+muteToggle.addEventListener('click', () => {
+    if (audioElement.volume > 0) {
+        previousVolume = audioElement.volume;
+        audioElement.volume = 0;
+        volumeControl.value = 0;
+        muteToggle.classList.remove('fa-volume-high');
+        muteToggle.classList.add('fa-volume-xmark');
+    } else {
+        audioElement.volume = previousVolume;
+        volumeControl.value = previousVolume * 100;
+        muteToggle.classList.remove('fa-volume-xmark');
+        muteToggle.classList.add('fa-volume-high');
+    }
+});
