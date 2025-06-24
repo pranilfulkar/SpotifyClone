@@ -29,6 +29,7 @@ songItems.forEach((element, i) => {
 masterPlay.addEventListener('click', () =>{
     if(audioElement.paused || audioElement.currentTime <= 0){
         audioElement.play();
+        masterSongName.innerText = songs[songIndex].songName;
         masterPlay.classList.remove('fa-circle-play');
         masterPlay.classList.add('fa-circle-pause');
         gif.style.opacity = 1;
