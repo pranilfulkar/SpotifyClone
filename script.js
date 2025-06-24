@@ -27,6 +27,13 @@ songItems.forEach((element, i) => {
 
 })
 
+function pulseSongInfo() {
+    songInfo.classList.remove('playing');
+    void songInfo.offsetWidth; // This restarts the animation
+    songInfo.classList.add('playing');
+}
+
+
 
 //handle play, pause button
 masterPlay.addEventListener('click', () =>{
@@ -36,7 +43,8 @@ masterPlay.addEventListener('click', () =>{
         masterPlay.classList.remove('fa-circle-play');
         masterPlay.classList.add('fa-circle-pause');
         gif.style.opacity = 1;
-        songInfo.classList.add("playing");
+        pulseSongInfo();
+
 
         document.getElementById(songIndex).classList.remove('fa-circle-play');
         document.getElementById(songIndex).classList.add('fa-circle-pause');
@@ -44,13 +52,15 @@ masterPlay.addEventListener('click', () =>{
 
     } else {
         audioElement.pause();
+        document.querySelector('.songInfo').classList.remove('playing');
         masterPlay.classList.remove('fa-circle-pause');
         masterPlay.classList.add('fa-circle-play');
         gif.style.opacity = 0;
 
         document.getElementById(songIndex).classList.remove('fa-circle-pause');
         document.getElementById(songIndex).classList.add('fa-circle-play');
-        songInfo.classList.remove("playing");
+        pulseSongInfo();
+
     }
 })
 
@@ -93,6 +103,9 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=> 
         masterSongName.innerText = songs[songIndex].songName;
         audioElement.currentTime = 0;
         audioElement.play();
+        pulseSongInfo();
+
+
         gif.style.opacity = 1;
         masterPlay.classList.remove('fa-circle-play'); 
         masterPlay.classList.add('fa-circle-pause');
@@ -110,6 +123,7 @@ document.getElementById('next').addEventListener('click', ()=>{
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
+    pulseSongInfo();
     masterPlay.classList.remove('fa-circle-play'); 
     masterPlay.classList.add('fa-circle-pause');
     gif.style.opacity = 1;
@@ -126,6 +140,7 @@ document.getElementById('previous').addEventListener('click', ()=>{
         masterSongName.innerText = songs[songIndex].songName;
         audioElement.currentTime = 0;
         audioElement.play();
+        pulseSongInfo();
         masterPlay.classList.remove('fa-circle-play'); 
         masterPlay.classList.add('fa-circle-pause');
         gif.style.opacity = 1;
@@ -145,6 +160,7 @@ audioElement.addEventListener('ended', () => {
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
+    pulseSongInfo();
 
     masterPlay.classList.remove('fa-circle-play');
     masterPlay.classList.add('fa-circle-pause');
