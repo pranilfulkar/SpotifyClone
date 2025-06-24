@@ -55,16 +55,18 @@ nav ul li{
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.bottom{
+.bottom {
     position: sticky;
-    background-color: black;
-    height: 90px;
     bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: black;
+    height: 120px;
     color: white;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 10;
 }
 
 .bottom time-display{
@@ -72,17 +74,23 @@ nav ul li{
     font-size: 1.2rem;
 }
 
-.icons{
-    margin: 12px 0;
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 10px;
 }
 
-.icons i{
+.icons i:hover {
+    color: #1db954;
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
 }
 
-#myProgressBar{
-    width: 80vh;
-    cursor: pointer;
+#myProgressBar {
+    width: 80%;
+    margin-bottom: 5px;
 }
 
 .songItem{
@@ -111,17 +119,51 @@ nav ul li{
     cursor: pointer;
 }
 
-.songInfo{
-    position: absolute;
-    left: 22vw;
+.songInfo {
     display: flex;
     align-items: center;
     font-family: 'Varela Round', sans-serif;
-
+    gap: 10px;
+    margin-bottom: 10x;
 }
 
-.songInfo img{
-    width: 74px;
+.songInfo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
     opacity: 0;
     transition: opacity 0.4s ease-in;
 }
+
+
+.time-display {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+#volumeControl {
+    width: 100px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+/* songInfo effect */
+@keyframes zoomInOut {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.songInfo.playing {
+    animation: zoomInOut 1s infinite ease-in-out;
+}
+
+

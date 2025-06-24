@@ -8,6 +8,7 @@ let masterSongName = document.getElementById('masterSongName');
 let songItems = Array.from(document.getElementsByClassName('songItem'));
 let volumeControl = document.getElementById('volumeControl');
 let muteToggle = document.getElementById('muteToggle');
+let songInfo = document.querySelector('.songInfo');
 
 
 let songs = [
@@ -35,6 +36,7 @@ masterPlay.addEventListener('click', () =>{
         masterPlay.classList.remove('fa-circle-play');
         masterPlay.classList.add('fa-circle-pause');
         gif.style.opacity = 1;
+        songInfo.classList.add("playing");
 
         document.getElementById(songIndex).classList.remove('fa-circle-play');
         document.getElementById(songIndex).classList.add('fa-circle-pause');
@@ -48,6 +50,7 @@ masterPlay.addEventListener('click', () =>{
 
         document.getElementById(songIndex).classList.remove('fa-circle-pause');
         document.getElementById(songIndex).classList.add('fa-circle-play');
+        songInfo.classList.remove("playing");
     }
 })
 
