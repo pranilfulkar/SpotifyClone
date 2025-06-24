@@ -55,7 +55,16 @@ audioElement.addEventListener('timeupdate', () =>{
     //updating seekbar
     progress = parseInt((audioElement.currentTime/audioElement.duration)*100);
     myProgressBar.value = progress;
+
+    //updates current time
+    document.getElementById("currentTime").innerText = formatTime(audioElement.currentTime);
+
+    if(!isNaN(audioElement.duration)){
+        document.getElementById("totalDuration").innerText = formatTime(audioElement.duration);
+    }
 })
+
+
 
 
 //change song by seek
@@ -140,3 +149,13 @@ audioElement.addEventListener('ended', () => {
     document.getElementById(songIndex).classList.remove('fa-circle-play');
     document.getElementById(songIndex).classList.add('fa-circle-pause');
 });
+
+
+//to convert seconds into MM:SS
+function formatTime(seconds) {
+    let min = Math.floor(seconds / 60);
+    let sec = Math.floor(seconds % 60);
+    if (sec < 10) sec = `0${sec}`;
+    if (min < 10) min = `0${min}`;
+    return `${min}:${sec}`;
+}

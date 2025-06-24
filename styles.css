@@ -67,6 +67,11 @@ nav ul li{
     flex-direction: column;
 }
 
+.bottom time-display{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+}
+
 .icons{
     margin: 12px 0;
 }
@@ -108,7 +113,7 @@ nav ul li{
 
 .songInfo{
     position: absolute;
-    left: 10vw;
+    left: 22vw;
     display: flex;
     align-items: center;
     font-family: 'Varela Round', sans-serif;
